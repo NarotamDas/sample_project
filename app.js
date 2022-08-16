@@ -10,9 +10,9 @@ var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
 
 var app = express();
-var mysqlConnection = mysql.createConnection({
+
+var mysqlConnections = mysql.createConnection({
   host: "server.blackloophosters.com",
-  // host: "database-1.cfzvpgeuxa84.us-east-1.rds.amazonaws.com",
   user: "sbkjapan_sbkjapanusr",
   password: "Bodrum123@456",
   database: "sbkjapan_db",
@@ -20,7 +20,7 @@ var mysqlConnection = mysql.createConnection({
   timeout: 3000,
 });
 app.use(cors());
-mysqlConnection.connect((err) => {
+mysqlConnections.connect((err) => {
   if (!err) console.log("Connection Established Successfully");
   else console.log("Connection Failed!" + JSON.stringify(err, undefined, 2));
 });
